@@ -11,7 +11,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -19,14 +18,14 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NewsFeedActivity extends AppCompatActivity
-        implements LoaderCallbacks<List<NewsFeed>> {
+public class ArcticleActivity extends AppCompatActivity
+        implements LoaderCallbacks<List<Article>> {
 
-    private static final String LOG_TAG = NewsFeedActivity.class.getName();
+    private static final String LOG_TAG = ArcticleActivity.class.getName();
 
     /** URL for newsfeed data from the USGS dataset */
     private static final String USGS_REQUEST_URL =
-            "http://content.guardianapis.com/search?q=debates&api-key=test\n";
+            "http://content.guardianapis.com/search?q=debates&show-tags=contributor&api-key=test";
 
     /**
      * Constant value for the newsfeed loader ID. We can choose any integer.
@@ -37,7 +36,7 @@ public class NewsFeedActivity extends AppCompatActivity
 
 
     /** Adapter for the list of news */
-    private NewsFeedAdaptor newsAdapter;
+    private ArcticleAdaptor newsAdapter;
 
     /** TextView that is displayed when the list is empty */
     private TextView mEmptyStateTextView;
@@ -54,7 +53,7 @@ public class NewsFeedActivity extends AppCompatActivity
         newsfeedListView.setEmptyView(mEmptyStateTextView);
 
         // Create a new adapter that takes an empty list of news as input
-        newsAdapter = new NewsFeedAdaptor(this, new ArrayList<NewsFeed>());
+        newsAdapter = new ArcticleAdaptor(this, new ArrayList<Article>());
 
         // Set the adapter on the {@link ListView}
         // so the list can be populated in the user interface
@@ -66,10 +65,10 @@ public class NewsFeedActivity extends AppCompatActivity
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 // Find the current news that was clicked on
-                NewsFeed currentNewsFeed = newsAdapter.getItem(position);
+                Article currentArticle = newsAdapter.getItem(position);
 
                 // Convert the String URL into a URI object (to pass into the Intent constructor)
-                Uri newsfeedUrl = Uri.parse(currentNewsFeed.getUrl());
+                Uri newsfeedUrl = Uri.parse(currentArticle.getUrl());
 
                 // Create a new intent to view the news URI
                 Intent websiteIntent = new Intent(Intent.ACTION_VIEW, newsfeedUrl);
@@ -107,33 +106,33 @@ public class NewsFeedActivity extends AppCompatActivity
     }
 
     @Override
-    public Loader<List<NewsFeed>> onCreateLoader(int i, Bundle bundle) {
+    public Loader<List<Article>> onCreateLoader(int i, Bundle bundle) {
         // Create a new loader for the given URL
-        return new NewsFeedLoader(this, USGS_REQUEST_URL);
+        return new ArcticleLoader(this, USGS_REQUEST_URL);
     }
 
     @Override
-    public void onLoadFinished(Loader<List<NewsFeed>> loader, List<NewsFeed> newsFeeds) {
+    public void onLoadFinished(Loader<List<Article>> loader, List<Article> articles) {
         // Hide loading indicator because the data has been loaded
         View loadingIndicator = findViewById(R.id.loading_indicator);
         loadingIndicator.setVisibility(View.GONE);
 
-        // Set empty state text to display "No newsFeeds found."
+        // Set empty state text to display "No articles found."
         mEmptyStateTextView.setText(R.string.no_earthquakes);
 
         // Clear the adapter of previous earthquake data
         //newsAdapter.clear();
 
-        // If there is a valid list of {@link NewsFeed}s, then add them to the adapter's
+        // If there is a valid list of {@link Article}s, then add them to the adapter's
         // data set. This will trigger the ListView to update.
-        if (newsFeeds != null && !newsFeeds.isEmpty()) {
-            //newsAdapter.addAll(newsFeeds);
-            newsAdapter.addAll(newsFeeds);
+        if (articles != null && !articles.isEmpty()) {
+            //newsAdapter.addAll(articles);
+            newsAdapter.addAll(articles);
         }
     }
 
     @Override
-    public void onLoaderReset(Loader<List<NewsFeed>> loader) {
+    public void onLoaderReset(Loader<List<Article>> loader) {
         // Loader reset, so we can clear out our existing data.
         newsAdapter.clear();
     }

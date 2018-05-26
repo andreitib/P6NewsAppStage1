@@ -9,21 +9,21 @@ import java.util.List;
  * Loads a list of news by using an AsyncTask to perform the
  * network request to the given URL.
  */
-public class NewsFeedLoader extends AsyncTaskLoader<List<NewsFeed>> {
+public class ArcticleLoader extends AsyncTaskLoader<List<Article>> {
 
     /** Tag for log messages */
-    private static final String LOG_TAG = NewsFeedLoader.class.getName();
+    private static final String LOG_TAG = ArcticleLoader.class.getName();
 
     /** Query URL */
     private String mUrl;
 
     /**
-     * Constructs a new {@link NewsFeedLoader}.
+     * Constructs a new {@link ArcticleLoader}.
      *
      * @param context of the activity
      * @param url to load data from
      */
-    public NewsFeedLoader(Context context, String url) {
+    public ArcticleLoader(Context context, String url) {
         super(context);
         mUrl = url;
     }
@@ -37,13 +37,13 @@ public class NewsFeedLoader extends AsyncTaskLoader<List<NewsFeed>> {
      * This is on a background thread.
      */
     @Override
-    public List<NewsFeed> loadInBackground() {
+    public List<Article> loadInBackground() {
         if (mUrl == null) {
             return null;
         }
 
         // Perform the network request, parse the response, and extract a list of newsFeeds.
-        List<NewsFeed> NewsFeed = QueryUtils.fetchNewsFeedData(mUrl);
-        return NewsFeed;
+        List<Article> Article = QueryUtils.fetchNewsAppData(mUrl);
+        return Article;
     }
 }
