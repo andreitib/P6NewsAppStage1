@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Layout for a single list item that displays an newsFeed -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+>
+
+    <TextView
+        android:id="@+id/section_name"
+        tools:text="Tech"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:textSize="16sp"
+       />
+
+=
+        <TextView
+            android:id="@+id/date"
+            tools:text="Mar 6, 2010"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:textSize="12sp"
+             />
+
+        <TextView
+            android:id="@+id/time"
+            tools:text="3:00 PM"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+             />
+
+
+
+
+        <TextView
+            android:id="@+id/title"
+            tools:text="Example News"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+             />
+        <!-- Author name -->
+        <TextView
+            android:id="@+id/author_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="John Smith" />
+
+
+</LinearLayout>
