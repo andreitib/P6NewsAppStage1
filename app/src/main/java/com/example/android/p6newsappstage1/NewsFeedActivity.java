@@ -26,7 +26,7 @@ public class NewsFeedActivity extends AppCompatActivity
 
     /** URL for newsfeed data from the USGS dataset */
     private static final String USGS_REQUEST_URL =
-            "http://content.guardianapis.com/search?show-fields=thumbnail&show-tags=contributor&q=future&order-by=newest&from-date=2017-05-01&api-key=44053436-2b60-4f53-888b-561a139b173c";
+            "http://content.guardianapis.com/search?q=debates&api-key=test\n";
 
     /**
      * Constant value for the newsfeed loader ID. We can choose any integer.

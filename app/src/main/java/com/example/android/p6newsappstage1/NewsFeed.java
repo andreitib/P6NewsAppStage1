@@ -9,23 +9,22 @@ public class NewsFeed {
 
 
     /**
-     * Title of the newsfeed
+     * Title of the newsfeed "webTitle"
      */
     private final String newsfeedTitle;
 
     /**
-     * Section name of the newsfeed
+     * Section name of the newsfeed "sectionName"
      */
     private final String newsfeedSectionName;
 
     /**
-     * Author name of the newsfeed
+     * Publication date of the newsfeed "webPublicationDate"
      */
-    private final String newsfeedAuthorName;
-
+    private final Date newsfeedPublicationDate;
 
     /**
-     * Website URL of the newsfeed
+     * Website URL of the newsfeed "webUrl"
      */
     private final String newsfeedUrl;
 
@@ -36,20 +35,20 @@ public class NewsFeed {
      *
      * @param title           is the title of the newsfeed
      * @param section         is the section where the newsfeed happened
-     * @param authorFullName  is the news author full name
+     * @param publicationDate is the news publication date
      * @param url             is the website URL to find more details about the newsfeed
      */
-    public NewsFeed(String title, String section, String authorFullName,  String url) {
+    public NewsFeed(String title, String section, Date publicationDate, String url) {
         newsfeedTitle = title;
         newsfeedSectionName = section;
-        newsfeedAuthorName = authorFullName;
 
+        newsfeedPublicationDate = publicationDate;
         newsfeedUrl = url;
 
     }
 
     /**
-     * Returns the magnitude of the newsfeed.
+     * Returns the Title of the newsfeed.
      */
     public String getTitle() {
         return newsfeedTitle;
@@ -62,14 +61,13 @@ public class NewsFeed {
         return newsfeedSectionName;
     }
 
+
     /**
-     * Returns the author of the newsfeed.
+     * Returns the publication date of the newsfeed.
      */
-    public String getAuthorName() {
-        return newsfeedAuthorName;
+    public Date getPublicationDate() {
+        return newsfeedPublicationDate;
     }
-
-
 
     /**
      * Returns the website URL to find more information about the newsfeed.

@@ -101,7 +101,7 @@ public final class QueryUtils {
                 Log.e(LOG_TAG, "Error response code: " + urlConnection.getResponseCode());
             }
         } catch (IOException e) {
-            Log.e(LOG_TAG, "Problem retrieving the earthquake JSON results.", e);
+            Log.e(LOG_TAG, "Problem retrieving the news feed JSON results.", e);
         } finally {
             if (urlConnection != null) {
                 urlConnection.disconnect();
@@ -165,44 +165,28 @@ public final class QueryUtils {
                 // Get a single earthquake at position i within the list of earthquakes
                 JSONObject currentNewsFeed = newsfeedArray.getJSONObject(i);
 
-                // For a given earthquake, extract the JSONObject associated with the
+                // For a given news, extract the JSONObject associated with the
                 // key called "properties", which represents a list of all properties
                 // for that earthquake.
                 JSONObject properties = currentNewsFeed.getJSONObject("properties");
 
-                // Extract the value for the key called "time"
-                long publicationDate = properties.getLong("time");
-
 
                 // Extract the value for the key called "webTitle"
                 String title = properties.getString("webTitle");
-                String authorFullName = properties.getString("webTitle");
+
                 String section = properties.getString("sectionName");
 
-                // Extract the value for the key called "sectionName"
-                //String sectionName = properties.getString("sectionName");
-                // Extract the value for the key called "webPublicationDate"
-                String originalPublicationDate = currentNewsFeed.getString("webPublicationDate");
+                //String authorFullName = properties.getString("");
 
-                //Format publication date
-                Date publicationDate = null;
-                try {
-                    publicationDate = (new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss")).parse(originalPublicationDate);
-                } catch (Exception e) {
-                    // If an error is thrown when executing the above statement in the "try" block,
-                    // catch the exception here, so the app doesn't crash. Print a log message
-                    // with the message from the exception.
-                    Log.e("QueryUtils", "Problem parsing the news date", e);
-                }
+
+
                 // Extract the value for the key called "url"
-                String url = properties.getString("url");
-
-
+                String url = properties.getString("webUrl");
 
 
                 // Create a new {@link NewsFeed} object with the magnitude, location, time,
                 // and url from the JSON response.
-                NewsFeed news = new NewsFeed(title,section, authorFullName, publicationDate, url);
+                NewsFeed news = new NewsFeed(title,section, authorFullName, url);
 
                 // Add the new {@link NewsFeed} to the list of newsFeeds.
                 newsFeeds.add(news);

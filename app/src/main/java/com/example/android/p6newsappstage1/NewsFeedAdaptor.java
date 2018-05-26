@@ -76,7 +76,31 @@ public class NewsFeedAdaptor extends ArrayAdapter<NewsFeed> {
             authorNameView.setVisibility(View.GONE);
         }
 
+        // Find the TextView with view ID date
+        TextView dateView = null;
+        TextView timeView = null;
+        if (currentNewsFeed.getPublicationDate() != null) {
+            dateView = listItemView.findViewById(R.id.date);
+            // Format the date string (i.e. "Mar 3, 1984")
+            String formattedDate = formatDate(currentNewsFeed.getPublicationDate()).concat(",");
+            // Display the date of the current earthquake in that TextView
+            dateView.setText(formattedDate);
 
+            // Find the TextView with view ID time
+            timeView = listItemView.findViewById(R.id.time);
+            // Format the time string (i.e. "4:30PM")
+            String formattedTime = formatTime(currentNewsFeed.getPublicationDate());
+            // Display the time of the current earthquake in that TextView
+            timeView.setText(formattedTime);
+
+            //Set date & time views as visible
+            dateView.setVisibility(View.VISIBLE);
+            timeView.setVisibility(View.VISIBLE);
+        } else {
+            //Set date & time views as gone
+            dateView.setVisibility(View.GONE);
+            timeView.setVisibility(View.GONE);
+        }
 
         // Return the list item view that is now showing the appropriate data
         return listItemView;
