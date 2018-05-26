@@ -63,18 +63,6 @@ public class NewsFeedAdaptor extends ArrayAdapter<NewsFeed> {
         // Display the section name of the current news in that TextView
         sectionNameView.setText(currentNewsFeed.getSectionName());
 
-        // Find the TextView with view ID author_name
-        TextView authorNameView = listItemView.findViewById(R.id.author_name);
-        // Display the author name of the current news in that TextView
-        if (currentNewsFeed.getAuthorName() != "") {
-            authorNameView.setText(currentNewsFeed.getAuthorName());
-
-            //Set author name view as visible
-            authorNameView.setVisibility(View.VISIBLE);
-        } else {
-            //Set author name view as gone
-            authorNameView.setVisibility(View.GONE);
-        }
 
         // Find the TextView with view ID date
         TextView dateView = null;

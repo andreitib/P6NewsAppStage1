@@ -165,28 +165,38 @@ public final class QueryUtils {
                 // Get a single earthquake at position i within the list of earthquakes
                 JSONObject currentNewsFeed = newsfeedArray.getJSONObject(i);
 
-                // For a given news, extract the JSONObject associated with the
-                // key called "properties", which represents a list of all properties
-                // for that earthquake.
-                JSONObject properties = currentNewsFeed.getJSONObject("properties");
-
 
                 // Extract the value for the key called "webTitle"
-                String title = properties.getString("webTitle");
+                String title = currentNewsFeed.getString("webTitle");
 
-                String section = properties.getString("sectionName");
+                // Extract the value for the key called "sectionName"
+                String sectionName = currentNewsFeed.getString("sectionName");
 
-                //String authorFullName = properties.getString("");
+
+                // Extract the value for the key called "webPublicationDate"
+                String originalPublicationDate = currentNewsFeed.getString("webPublicationDate");
+
+                //Format publication date
+                Date publicationDate = null;
+                try {
+                    publicationDate = (new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss")).parse(originalPublicationDate);
+                } catch (Exception e) {
+                    // If an error is thrown when executing the above statement in the "try" block,
+                    // catch the exception here, so the app doesn't crash. Print a log message
+                    // with the message from the exception.
+                    Log.e("QueryUtils", "Problem parsing the news date", e);
+                }
+
 
 
 
                 // Extract the value for the key called "url"
-                String url = properties.getString("webUrl");
+                String url = currentNewsFeed.getString("webUrl");
 
 
                 // Create a new {@link NewsFeed} object with the magnitude, location, time,
                 // and url from the JSON response.
-                NewsFeed news = new NewsFeed(title,section, authorFullName, url);
+                NewsFeed news = new NewsFeed(title,sectionName,publicationDate,url);
 
                 // Add the new {@link NewsFeed} to the list of newsFeeds.
                 newsFeeds.add(news);
