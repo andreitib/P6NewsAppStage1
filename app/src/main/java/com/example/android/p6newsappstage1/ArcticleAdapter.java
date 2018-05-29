@@ -7,29 +7,27 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
- * An {@link ArcticleAdaptor} knows how to create a list item layout for each news
+ * An {@link ArcticleAdapter} knows how to create a list item layout for each news
  * in the data source (a list of {@link Article} objects).
  *
  * These list item layouts will be provided to an adapter view like ListView
  * to be displayed to the user.
  */
-public class ArcticleAdaptor extends ArrayAdapter<Article> {
-
-
-
+public class ArcticleAdapter extends ArrayAdapter<Article> {
     /**
-     * Constructs a new {@link ArcticleAdaptor}.
+     * Constructs a new {@link ArcticleAdapter}.
      *
      * @param context of the app
      * @param newsfeed is the list of newsfeed, which is the data source of the adapter
      */
-    public ArcticleAdaptor(Context context, List<Article> newsfeed) {
+    public ArcticleAdapter(Context context, List<Article> newsfeed) {
         super(context, 0, newsfeed);
     }
-
     /**
      * Returns a list item view that displays information about every news at the given position
      * in the list of newsfeeds.
@@ -41,12 +39,11 @@ public class ArcticleAdaptor extends ArrayAdapter<Article> {
         View listItemView = convertView;
         if (listItemView == null) {
             listItemView = LayoutInflater.from(getContext()).inflate(
-                    R.layout.newsfeed_list_item, parent, false);
+                    R.layout.arcticles_list_item, parent, false);
         }
 
         // Find the newss at the given position in the list of newsfeeds
         Article currentArticle = getItem(position);
-
 
         //Find the TextView with ID article_title
         TextView articleTitleTextView = listItemView.findViewById(R.id.article_tile);
@@ -55,19 +52,39 @@ public class ArcticleAdaptor extends ArrayAdapter<Article> {
         //Find the TextView with ID article_section
         TextView articleSectionChip = listItemView.findViewById(R.id.article_section);
         articleSectionChip.setText(currentArticle.getArticle_section());
-        //Find the TextView with ID date
-        TextView dateTextView = listItemView.findViewById(R.id.article_date);
-        dateTextView.setText(currentArticle.getDate());
-//        Find the TextView with the ID author
+        // Find the TextView with view ID date
+        TextView dateView = null;
+        dateView = listItemView.findViewById(R.id.article_date);
+        // Format the date string (
+        String formattedDate = formatDate(currentArticle.getDate()).concat(",");
+        // Display the date of the current earthquake in that TextView
+        dateView.setText(formattedDate);
+        TextView timeView = null;
+        // Find the TextView with view ID time
+        timeView = listItemView.findViewById(R.id.article_time);
+        // Format the time string
+        String formattedTime = formatTime(currentArticle.getDate());
+        // Display the time of the current earthquake in that TextView
+        timeView.setText(formattedTime);
+        //Find the TextView with the ID author
         TextView authorTextView = listItemView.findViewById(R.id.author);
         authorTextView.setText(currentArticle.getAuthor());
         return listItemView;
     }
 
-    private String formatDate(String date) {
-        String unformattedDate = date;
-        String subDate = unformattedDate.substring(0,10);
-        String subTime = unformattedDate.substring(11,19);
-        return subDate + "  " + subTime;
+    /**
+     * Return the formatted date string from a Date object.
+     */
+    private String formatDate(Date dateObject) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("LLL dd, yyyy");
+        return dateFormat.format(dateObject);
+    }
+
+    /**
+     * Return the formatted date string from a Date object.
+     */
+    private String formatTime(Date dateObject) {
+        SimpleDateFormat timeFormat = new SimpleDateFormat("h:mm a");
+        return timeFormat.format(dateObject);
     }
 }

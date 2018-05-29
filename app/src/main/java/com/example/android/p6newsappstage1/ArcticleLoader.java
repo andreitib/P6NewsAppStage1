@@ -43,7 +43,7 @@ public class ArcticleLoader extends AsyncTaskLoader<List<Article>> {
         }
 
         // Perform the network request, parse the response, and extract a list of newsFeeds.
-        List<Article> Article = QueryUtils.fetchNewsAppData(mUrl);
+        List<Article> Article = QueryUtils.fetchArcticlesAppData(mUrl);
         return Article;
     }
 }

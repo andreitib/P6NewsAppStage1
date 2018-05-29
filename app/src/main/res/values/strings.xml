@@ -2,13 +2,13 @@
 
 <resources>
     <!-- Title for the application. [CHAR LIMIT=12] -->
-    <string name="app_name"> Android News Feeds </string>
+    <string name="app_name"> Android Articles App :) </string>
 
     <!-- Default text to show with the newsFeed location -->
     <string name="near_the">Near the</string>
 
     <!-- Text to display in the list when there are no articles [CHAR LIMIT=NONE] -->
-    <string name="no_earthquakes">No articles found.</string>
+    <string name="no_article">No articles found.</string>
 
     <!-- Error message when there is no internet connectivity [CHAR LIMIT=NONE] -->
     <string name="no_internet_connection">Internet connection is gone</string>
