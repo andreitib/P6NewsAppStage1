@@ -32,7 +32,7 @@ public final class QueryUtils {
     private static final String LOD_TAG = QueryUtils.class.getSimpleName();
 
     /**
-     * shortcuts for the json responses
+     * shortcuts used for json responses
      */
     private static final String json_sectionName = "sectionName";
     private static final String json_response = "response";
@@ -42,7 +42,6 @@ public final class QueryUtils {
     private static final String json_title = "webTitle";
     private static final String json_url = "webUrl";
     private static final int the_index = 0;
-
     /**
      * building and manipulating my uri url requests
      */
@@ -200,8 +199,7 @@ public final class QueryUtils {
                             articleAuthor = currentStoryTags.getString(json_title);
                         }
                     }
-
-                // Create a new {@link NewsApp} object with the artTitle, secName,artDate,artAuthor and url.
+                // Create a new {@link NewsApp} object with the artTitle, secName,publicationDate,articleAuthor and url.
                 Article JSONarcticles = new Article(artTitle, secName, publicationDate, articleAuthor, url);
                 // and url from the JSON response.
                 newsApps.add(JSONarcticles);

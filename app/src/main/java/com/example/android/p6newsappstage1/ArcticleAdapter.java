@@ -46,16 +46,18 @@ public class ArcticleAdapter extends ArrayAdapter<Article> {
         Article currentArticle = getItem(position);
 
         //Find the TextView with ID article_title
-        TextView articleTitleTextView = listItemView.findViewById(R.id.article_tile);
+        TextView articleTitleTextView = listItemView.findViewById(R.id.article_title);
         assert currentArticle != null;
         articleTitleTextView.setText(currentArticle.getArticle_title());
+
         //Find the TextView with ID article_section
         TextView articleSectionChip = listItemView.findViewById(R.id.article_section);
         articleSectionChip.setText(currentArticle.getArticle_section());
+
         // Find the TextView with view ID date
         TextView dateView = null;
         dateView = listItemView.findViewById(R.id.article_date);
-        // Format the date string (
+        // Format the date string
         String formattedDate = formatDate(currentArticle.getDate()).concat(",");
         // Display the date of the current earthquake in that TextView
         dateView.setText(formattedDate);
@@ -87,4 +89,6 @@ public class ArcticleAdapter extends ArrayAdapter<Article> {
         SimpleDateFormat timeFormat = new SimpleDateFormat("h:mm a");
         return timeFormat.format(dateObject);
     }
+
+
 }

@@ -3,18 +3,19 @@
 
 <resources>
     <!-- Primary color of the app (shown in the app bar) -->
-    <color name="colorPrimary">#2B3D4D</color>
+    <color name="colorPrimary">#00B8D4</color>
 
     <!-- Primary dark color of the app (shown in the status bar) -->
-    <color name="colorPrimaryDark">#23303D</color>
+    <color name="colorPrimaryDark">#006064</color>
 
     <!-- Accent color of the app -->
     <color name="colorAccent">#10CAC9</color>
 
-
+    <!-- Black color of the app -->
+    <color name="colorBlack">#10CAC9</color>
 
     <!-- Color of the background-->
-    <color name="backgroundcolor">#795548</color>
+    <color name="backgroundcolor">#FFF8E1</color>
 
     <!-- Color of the Article Title -->
     <color name="articletitlecolor">#2D0B33</color>

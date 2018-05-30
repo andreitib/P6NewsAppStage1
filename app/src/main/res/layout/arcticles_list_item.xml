@@ -1,63 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<!-- Layout for a single list item that displays an newsFeed -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/linearLayout"
-    android:orientation="vertical"
-    android:android:background="@color/backgroundcolor"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:padding="7dp"
+    android:background="@color/backgroundcolor">
 
     <TextView
         android:id="@+id/article_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="19sp"
-        android:fontFamily=""
-        android:layout_gravity="center"
-        android:textColor="@color/oswald"
-        tools:text="Gavin Williamson has TV interview terminated after repeatedly avoiding question - Politics live"/>
+        style="@style/titlestyle"
+        app:layout_constraintBottom_toTopOf="@+id/article_section"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:text="Gavin Williamson has TV interview terminated after repeatedly avoiding question - Politics live" />
 
     <TextView
         android:id="@+id/article_section"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="13dp"
-        android:layout_marginBottom="21dp"
-        android:textSize="17sp"
-        android:fontFamily="serif-monospace"
-        android:textColor="@color/articlesectioncolor"
-        tools:text="Politics"
-        />
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/section_date_wrapper"
-        >
-            <TextView
-                android:id="@+id/article_date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="16sp"
-                tools:text="2018-05-29"/>
+        style="@style/articlesectionstyle"
+        android:layout_marginBottom="18dp"
+        app:layout_constraintBottom_toTopOf="@+id/article_time"
+        app:layout_constraintStart_toStartOf="@+id/article_title"
+        app:layout_constraintTop_toBottomOf="@+id/article_title"
+        tools:text="Politics" />
 
-            <TextView
-                android:id="@+id/article_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="16sp"
-                tools:text="14:40:47"/>
-    </LinearLayout>
+    <TextView
+        android:id="@+id/article_date"
+        style="@style/timeanddatestyle"
+        android:paddingStart="20dp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/article_time"
+        app:layout_constraintEnd_toStartOf="@+id/article_time"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="2018-05-29" />
+
+    <TextView
+        android:id="@+id/article_time"
+        style="@style/timeanddatestyle"
+        android:layout_marginEnd="26dp"
+        android:layout_marginRight="26dp"
+        android:paddingStart="200dp"
+        app:layout_constraintBottom_toTopOf="@+id/author"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/article_date"
+        app:layout_constraintTop_toBottomOf="@+id/article_section"
+        tools:text="14:40:47" />
+
     <TextView
         android:id="@+id/author"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/authorcolor"
-        android:textSize="14sp"
-        tools:text="Andrew Sparrow"/>
-
-
-</LinearLayout>
+        style="@style/authorstyle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/article_date"
+        app:layout_constraintTop_toBottomOf="@+id/article_time"
+        tools:text="Andrew Sparrow" />
+</android.support.constraint.ConstraintLayout>
