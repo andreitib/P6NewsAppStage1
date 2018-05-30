@@ -34,12 +34,12 @@ public final class QueryUtils {
     /**
      * shortcuts used for json responses
      */
-    private static final String json_sectionName = "sectionName";
-    private static final String json_response = "response";
-    private static final String json_results = "results";
     private static final String json_tags = "tags";
     private static final String json_publicationDate = "webPublicationDate";
     private static final String json_title = "webTitle";
+    private static final String json_sectionName = "sectionName";
+    private static final String json_response = "response";
+    private static final String json_results = "results";
     private static final String json_url = "webUrl";
     private static final int the_index = 0;
     /**
@@ -53,7 +53,7 @@ public final class QueryUtils {
         try {
             jsonResponse = makeHttpRequest(url);
         } catch (IOException e) {
-            Log.e(LOD_TAG, "Problem making the HTTP request.", e);
+            Log.e(LOD_TAG, "There is a problem making the HTTP request.", e);
         }
         // Extract relevant fields from the JSON response and create a list of {@link NewsApp}s
         // Return the list of {@link NewsApp}s
@@ -200,7 +200,7 @@ public final class QueryUtils {
                         }
                     }
                 // Create a new {@link NewsApp} object with the artTitle, secName,publicationDate,articleAuthor and url.
-                Article JSONarcticles = new Article(artTitle, secName, publicationDate, articleAuthor, url);
+                Article JSONarcticles = new Article(artTitle, secName,publicationDate, articleAuthor, url);
                 // and url from the JSON response.
                 newsApps.add(JSONarcticles);
             }
