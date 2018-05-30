@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/linearLayout"
     style="@style/listitemstyle">
-
     <TextView
         android:id="@+id/article_title"
         style="@style/titlestyle"
