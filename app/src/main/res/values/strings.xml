@@ -2,7 +2,7 @@
 
 <resources>
     <!-- Title for the application. [CHAR LIMIT=12] -->
-    <string name="app_name"> Android Articles App :) </string>
+    <string name="app_name"> Android Articles App</string>
 
     <!-- Default text to show with the newsFeed location -->
     <string name="near_the">Near the</string>
@@ -15,5 +15,10 @@
 
     <!-- Content description text for news image [CHAR LIMIT=100] -->
     <string name="news_image">News image</string>
+    <string name="article_date">2018-05-29</string>
+    <string name="article_time">14:40:47</string>
+    <string name="author">Andrew Sparrow</string>
+    <string name="article_title">Gavin Williamson has TV interview terminated after repeatedly avoiding question - Politics live</string>
+    <string name="article_section">Politics</string>
 
 </resources>

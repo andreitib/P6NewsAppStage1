@@ -3,11 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/linearLayout"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginBottom="10dp"
-    android:padding="7dp"
-    android:background="@color/backgroundcolor">
+    style="@style/listitemstyle">
 
     <TextView
         android:id="@+id/article_title"
@@ -16,7 +12,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed"
-        tools:text="Gavin Williamson has TV interview terminated after repeatedly avoiding question - Politics live" />
+        tools:text="@string/article_title" />
 
     <TextView
         android:id="@+id/article_section"
@@ -25,7 +21,7 @@
         app:layout_constraintBottom_toTopOf="@+id/article_time"
         app:layout_constraintStart_toStartOf="@+id/article_title"
         app:layout_constraintTop_toBottomOf="@+id/article_title"
-        tools:text="Politics" />
+        tools:text="@string/article_section" />
 
     <TextView
         android:id="@+id/article_date"
@@ -35,7 +31,7 @@
         app:layout_constraintEnd_toStartOf="@+id/article_time"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
-        tools:text="2018-05-29" />
+        tools:text="@string/article_date" />
 
     <TextView
         android:id="@+id/article_time"
@@ -47,7 +43,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/article_date"
         app:layout_constraintTop_toBottomOf="@+id/article_section"
-        tools:text="14:40:47" />
+        tools:text="@string/article_time" />
 
     <TextView
         android:id="@+id/author"
@@ -55,5 +51,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/article_date"
         app:layout_constraintTop_toBottomOf="@+id/article_time"
-        tools:text="Andrew Sparrow" />
+        tools:text="@string/author" />
 </android.support.constraint.ConstraintLayout>

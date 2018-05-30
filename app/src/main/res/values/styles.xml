@@ -42,4 +42,12 @@
         <item name="android:paddingTop">7dp</item>
         <item name="android:paddingStart">20dp</item>
     </style>
+    <style name="listitemstyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:padding">7dp</item>
+        <item name="android:background">@color/backgroundcolor</item>
+    </style>
+
 </resources>
