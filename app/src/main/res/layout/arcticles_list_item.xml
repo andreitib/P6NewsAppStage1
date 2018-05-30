@@ -17,7 +17,6 @@
     <TextView
         android:id="@+id/article_section"
         style="@style/articlesectionstyle"
-        android:layout_marginBottom="18dp"
         app:layout_constraintBottom_toTopOf="@+id/article_time"
         app:layout_constraintStart_toStartOf="@+id/article_title"
         app:layout_constraintTop_toBottomOf="@+id/article_title"
