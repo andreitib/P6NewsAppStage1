@@ -26,6 +26,7 @@ import java.util.Locale;
  * Helper methods related to requesting and receiving news data from the Guardian json.
  */
 public final class QueryUtils {
+
     /**
      * Tag for log message
      */
@@ -45,7 +46,7 @@ public final class QueryUtils {
     /**
      * building and manipulating my uri url requests
      */
-    public static List<Article> fetchArcticlesAppData(String requestUrl) {
+    public static List<com.example.android.p6newsappstage1.Article> fetchArcticlesAppData(String requestUrl) {
         //Create URL object
         URL url = createUrl(requestUrl);
         //Perform HTTP request to the URL and receive a JSON response back
@@ -155,9 +156,9 @@ public final class QueryUtils {
      * <p>
      * parsing the given JSON response.
      */
-    private static List<Article> extractFeatureFromJson(String newsAppJson) {
+    private static List<com.example.android.p6newsappstage1.Article> extractFeatureFromJson(String newsAppJson) {
         // Create an empty ArrayList that we can start adding newsApps to
-        List<Article> newsApps = new ArrayList<>();
+        List<com.example.android.p6newsappstage1.Article> newsApps = new ArrayList<>();
         // Try to parse the JSON response string. If there's a problem with the way the JSON
         // is formatted, a JSONException exception object will be thrown.
         // Catch the exception so the app doesn't crash, and print the error message to the logs.
@@ -200,7 +201,7 @@ public final class QueryUtils {
                         }
                     }
                 // Create a new {@link NewsApp} object with the artTitle, secName,publicationDate,articleAuthor and url.
-                Article JSONarcticles = new Article(artTitle, secName,publicationDate, articleAuthor, url);
+                com.example.android.p6newsappstage1.Article JSONarcticles = new com.example.android.p6newsappstage1.Article(artTitle, secName,publicationDate, articleAuthor, url);
                 // and url from the JSON response.
                 newsApps.add(JSONarcticles);
             }
@@ -213,4 +214,5 @@ public final class QueryUtils {
         //Return the list of newsApps
         return newsApps;
     }
+
 }

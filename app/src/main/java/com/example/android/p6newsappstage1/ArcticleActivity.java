@@ -15,11 +15,13 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.android.p6newsappstage1.R;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class ArcticleActivity extends AppCompatActivity
-        implements LoaderCallbacks<List<Article>> {
+        implements LoaderCallbacks<List<com.example.android.p6newsappstage1.Article>> {
 
     private static final String LOG_TAG = ArcticleActivity.class.getName();
 
@@ -36,7 +38,7 @@ public class ArcticleActivity extends AppCompatActivity
 
 
     /** Adapter for the list of news */
-    private ArcticleAdapter JSONnewsAdapter;
+    private com.example.android.p6newsappstage1.ArcticleAdapter JSONnewsAdapter;
 
     /** TextView that is displayed when the list is empty */
     private TextView mEmptyStateTextView;
@@ -53,7 +55,7 @@ public class ArcticleActivity extends AppCompatActivity
         newsfeedListView.setEmptyView(mEmptyStateTextView);
 
         // Create a new adapter that takes an empty list of news as input
-        JSONnewsAdapter = new ArcticleAdapter(this, new ArrayList<Article>());
+        JSONnewsAdapter = new com.example.android.p6newsappstage1.ArcticleAdapter(this, new ArrayList<com.example.android.p6newsappstage1.Article>());
 
         // Set the adapter on the {@link ListView}
         // so the list can be populated in the user interface
@@ -65,15 +67,10 @@ public class ArcticleActivity extends AppCompatActivity
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 // Find the current news that was clicked on
-                Article currentArticle = JSONnewsAdapter.getItem(position);
-
-                // Convert the String URL into a URI object (to pass into the Intent constructor)
+                com.example.android.p6newsappstage1.Article currentArticle = JSONnewsAdapter.getItem(position);
                 Uri newsfeedUrl = Uri.parse(currentArticle.getUrl());
-
-                // Create a new intent to view the news URI
+                // View the news URI
                 Intent websiteIntent = new Intent(Intent.ACTION_VIEW, newsfeedUrl);
-
-                // Send the intent to launch a new activity
                 startActivity(websiteIntent);
             }
         });
@@ -106,13 +103,13 @@ public class ArcticleActivity extends AppCompatActivity
     }
 
     @Override
-    public Loader<List<Article>> onCreateLoader(int i, Bundle bundle) {
+    public Loader<List<com.example.android.p6newsappstage1.Article>> onCreateLoader(int i, Bundle bundle) {
         // Create a new loader for the given URL
-        return new ArcticleLoader(this, GUARDIAN_REQUEST_URL);
+        return new com.example.android.p6newsappstage1.ArcticleLoader(this, GUARDIAN_REQUEST_URL);
     }
 
     @Override
-    public void onLoadFinished(Loader<List<Article>> loader, List<Article> articles) {
+    public void onLoadFinished(Loader<List<com.example.android.p6newsappstage1.Article>> loader, List<com.example.android.p6newsappstage1.Article> articles) {
         // Hide loading indicator because the data has been loaded
         View loadingIndicator = findViewById(R.id.loading_indicator);
         loadingIndicator.setVisibility(View.GONE);
@@ -129,7 +126,7 @@ public class ArcticleActivity extends AppCompatActivity
     }
 
     @Override
-    public void onLoaderReset(Loader<List<Article>> loader) {
+    public void onLoaderReset(Loader<List<com.example.android.p6newsappstage1.Article>> loader) {
         // Loader reset, so we can clear out our existing data.
         JSONnewsAdapter.clear();
     }
