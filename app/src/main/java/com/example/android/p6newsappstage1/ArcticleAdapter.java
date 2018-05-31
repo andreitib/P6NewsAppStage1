@@ -5,12 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
-
-import com.example.android.p6newsappstage1.R;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;

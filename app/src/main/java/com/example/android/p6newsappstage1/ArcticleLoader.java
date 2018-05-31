@@ -2,9 +2,6 @@ package com.example.android.p6newsappstage1;
 
 import android.content.AsyncTaskLoader;
 import android.content.Context;
-
-import com.example.android.p6newsappstage1.QueryUtils;
-
 import java.util.List;
 
 /**
