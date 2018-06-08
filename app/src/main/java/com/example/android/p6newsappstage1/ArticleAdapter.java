@@ -11,20 +11,20 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * An {@link ArcticleAdapter} knows how to create a list item layout for each news
+ * An {@link ArticleAdapter} knows how to create a list item layout for each news
  * in the data source (a list of {@link Article} objects).
  *
  * These list item layouts will be provided to an adapter view like ListView
  * to be displayed to the user.
  */
-public class ArcticleAdapter extends ArrayAdapter<com.example.android.p6newsappstage1.Article> {
+public class ArticleAdapter extends ArrayAdapter<com.example.android.p6newsappstage1.Article> {
     /**
-     * Constructs a new {@link ArcticleAdapter}.
+     * Constructs a new {@link ArticleAdapter}.
      *
      * @param context of the app
      * @param newsfeed is the list of newsfeed, which is the data source of the adapter
      */
-    public ArcticleAdapter(Context context, List<com.example.android.p6newsappstage1.Article> newsfeed) {
+    public ArticleAdapter(Context context, List<com.example.android.p6newsappstage1.Article> newsfeed) {
         super(context, 0, newsfeed);
     }
     /**
@@ -46,7 +46,7 @@ public class ArcticleAdapter extends ArrayAdapter<com.example.android.p6newsapps
         ViewHolder holder;
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(
-                    R.layout.arcticles_list_item, parent, false);
+                    R.layout.articles_list_item, parent, false);
             holder = new ViewHolder();
             holder.titlearticle = (TextView) convertView.findViewById(R.id.article_title);
             holder.sectionarticle = (TextView) convertView.findViewById(R.id.article_section);

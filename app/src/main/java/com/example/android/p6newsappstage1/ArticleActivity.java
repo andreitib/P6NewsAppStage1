@@ -17,10 +17,10 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ArcticleActivity extends AppCompatActivity
+public class ArticleActivity extends AppCompatActivity
         implements LoaderCallbacks<List<com.example.android.p6newsappstage1.Article>> {
 
-    private static final String LOG_TAG = ArcticleActivity.class.getName();
+    private static final String LOG_TAG = ArticleActivity.class.getName();
 
     /** URL for newsfeed data from the Guardian JSON dataset */
     private static final String GUARDIAN_REQUEST_URL =
@@ -35,7 +35,7 @@ public class ArcticleActivity extends AppCompatActivity
 
 
     /** Adapter for the list of news */
-    private com.example.android.p6newsappstage1.ArcticleAdapter JSONnewsAdapter;
+    private ArticleAdapter JSONnewsAdapter;
 
     /** TextView that is displayed when the list is empty */
     private TextView mEmptyStateTextView;
@@ -43,7 +43,7 @@ public class ArcticleActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.arcticles_activity);
+        setContentView(R.layout.articles_activity);
 
         // Find a reference to the {@link ListView} in the layout
         ListView newsfeedListView = (ListView) findViewById(R.id.list);
@@ -52,7 +52,7 @@ public class ArcticleActivity extends AppCompatActivity
         newsfeedListView.setEmptyView(mEmptyStateTextView);
 
         // Create a new adapter that takes an empty list of news as input
-        JSONnewsAdapter = new com.example.android.p6newsappstage1.ArcticleAdapter(this, new ArrayList<com.example.android.p6newsappstage1.Article>());
+        JSONnewsAdapter = new ArticleAdapter(this, new ArrayList<com.example.android.p6newsappstage1.Article>());
 
         // Set the adapter on the {@link ListView}
         // so the list can be populated in the user interface
@@ -102,7 +102,7 @@ public class ArcticleActivity extends AppCompatActivity
     @Override
     public Loader<List<com.example.android.p6newsappstage1.Article>> onCreateLoader(int i, Bundle bundle) {
         // Create a new loader for the given URL
-        return new com.example.android.p6newsappstage1.ArcticleLoader(this, GUARDIAN_REQUEST_URL);
+        return new ArticleLoader(this, GUARDIAN_REQUEST_URL);
     }
 
     @Override

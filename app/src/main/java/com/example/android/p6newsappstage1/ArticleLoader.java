@@ -8,21 +8,21 @@ import java.util.List;
  * Loads a list of news by using an AsyncTask to perform the
  * network request to the given URL.
  */
-public class ArcticleLoader extends AsyncTaskLoader<List<com.example.android.p6newsappstage1.Article>> {
+public class ArticleLoader extends AsyncTaskLoader<List<com.example.android.p6newsappstage1.Article>> {
 
     /** Tag for log messages */
-    private static final String LOG_TAG = ArcticleLoader.class.getName();
+    private static final String LOG_TAG = ArticleLoader.class.getName();
 
     /** Query URL */
     private String mUrl;
 
     /**
-     * Constructs a new {@link ArcticleLoader}.
+     * Constructs a new {@link ArticleLoader}.
      *
      * @param context of the activity
      * @param url to load data from
      */
-    public ArcticleLoader(Context context, String url) {
+    public ArticleLoader(Context context, String url) {
         super(context);
         mUrl = url;
     }
